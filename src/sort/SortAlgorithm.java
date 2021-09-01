@@ -28,18 +28,19 @@ public interface SortAlgorithm {
     /**
      * 验证排序结果
      *
+     * @param arr1
+     * @param arr2
+     * @return bool
+     */
+    default boolean isEquals(int[] arr1, int[] arr2) {
+        return Arrays.equals(arr1, arr2);
+    }
+
+    /**
+     * 比较器
      * @param arr
      */
-    default void verify(int[] arr) {
-        int[] sortedArr = Arrays.copyOf(arr, arr.length);
+    default void comparator(int[] arr){
         Arrays.sort(arr);
-        System.out.println(this.getClass().getSimpleName() + ": ");
-        if (Arrays.equals(arr, sortedArr)) {
-            System.out.println("success");
-        } else {
-            System.err.println("failed");
-        }
-        System.out.println("your: " + Arrays.toString(sortedArr));
-        System.out.println("sort: " + Arrays.toString(arr));
     }
 }
