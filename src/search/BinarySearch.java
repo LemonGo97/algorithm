@@ -3,10 +3,17 @@ package search;
 
 /**
  * @author lemongo97
+ *
+ * 二分查找 最左侧目标数，如果找到返回下标，否则返回 -1
  */
 public class BinarySearch implements SearchAlgorithm {
 
-    @Override
+    /**
+     *
+     * @param array
+     * @param num
+     * @return
+     */
     public int search(int[] array, int num) {
         if (array == null || array.length == 0){
             return -1;

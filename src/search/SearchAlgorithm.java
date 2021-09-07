@@ -5,11 +5,4 @@ package search;
  */
 public interface SearchAlgorithm {
 
-    /**
-     * 查找
-     * @param array
-     * @return
-     */
-    int search(int[] array,int num);
-
 }
