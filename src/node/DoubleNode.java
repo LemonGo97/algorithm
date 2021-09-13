@@ -19,7 +19,6 @@ public class DoubleNode<E> {
     public String toString() {
         return "DoubleNode{" +
                 "item=" + item +
-                ", prev=" + prev +
                 ", next=" + next +
                 '}';
     }
