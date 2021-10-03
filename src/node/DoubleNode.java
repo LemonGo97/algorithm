@@ -5,11 +5,11 @@ package node;
  * 双向链表
  */
 public class DoubleNode<E> {
-    E item;
-    DoubleNode<E> prev;
-    DoubleNode<E> next;
+    public E item;
+    public DoubleNode<E> prev;
+    public DoubleNode<E> next;
 
-    DoubleNode(E element, DoubleNode<E> prev, DoubleNode<E> next) {
+    public DoubleNode(E element, DoubleNode<E> prev, DoubleNode<E> next) {
         this.item = element;
         this.prev = prev;
         this.next = next;
