@@ -1,46 +1,44 @@
 package sort;
 
-public class MergeSort implements SortAlgorithm {
+import java.util.Arrays;
 
-    @Override
-    public void sort(int... arr) {
-        if (arr == null || arr.length <= 1) {
-            return;
-        }
+public class MergeSort {
 
+    public static int[] sort(int[] arr) {
         process(arr, 0, arr.length - 1);
+        return arr;
     }
 
-    private void process(int[] arr, int left, int right) {
-        if (left == right){
+    public static void process(int[] arr, int leftPos, int rightPos) {
+        if (leftPos == rightPos){
             return;
         }
-        int mid = left + ((right - left) >> 1);
-        process(arr, left, mid);
-        process(arr, mid + 1, right);
-        merge(arr, left, mid, right);
+        int middlePos = (leftPos + rightPos) / 2;
+        process(arr, leftPos, middlePos);
+        process(arr, middlePos + 1, rightPos);
+        merge(arr, leftPos, middlePos,rightPos);
     }
 
-    private void merge(int[] arr, int left, int mid, int right) {
-        int[] temp = new int[right - left + 1];
-        int leftPos = left;
-        int rightPos = mid + 1;
-        int i = 0;
-
-        while (leftPos <= mid && rightPos <= right) {
-            temp[i++] = arr[leftPos] <= arr[rightPos] ? arr[leftPos++] : arr[rightPos++];
+    private static void merge(int[] arr, int leftPos, int middlePos, int rightPos) {
+        int[] help = new int[rightPos - leftPos + 1];
+        int leftPointer = leftPos;
+        int rightPointer = middlePos + 1;
+        int helpPointer = 0;
+        while (leftPointer <= middlePos && rightPointer <= rightPos){
+            help[helpPointer++] = arr[leftPointer] <= arr[rightPointer] ? arr[leftPointer++] : arr[rightPointer++];
         }
-
-        while (leftPos <= mid) {
-            temp[i++] = arr[leftPos++];
+        while (leftPointer <= middlePos){
+            help[helpPointer] = arr[leftPointer++];
         }
-
-        while (rightPos <= right) {
-            temp[i++] = arr[rightPos++];
+        while (rightPointer <= rightPos){
+            help[helpPointer] = arr[rightPointer++];
         }
-        for (i = 0; i < temp.length; i++) {
-            arr[left + i] = temp[i];
+        for (int i = 0; i < help.length; i++) {
+            arr[leftPos + i] = help[i];
         }
     }
 
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(sort(new int[]{3, 1, 4, 2})));
+    }
 }
