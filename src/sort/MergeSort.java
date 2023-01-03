@@ -38,7 +38,36 @@ public class MergeSort {
         }
     }
 
+    public static int[] sortByLoop(int[] arr){
+        processByLoop(arr, 0, arr.length - 1);
+        return arr;
+    }
+
+    public static void processByLoop(int[] arr, int leftPos, int rightPos){
+        if (leftPos == rightPos){
+            return;
+        }
+        int step = 1;
+        while (step < arr.length) {
+            int leftPointer = 0;
+            while (leftPointer < arr.length){
+                if (step >= arr.length - leftPointer) {
+                    break;
+                }
+                int middlePointer = leftPointer + step - 1;
+                int rightPointer = middlePointer + Math.min(step, arr.length - middlePointer - 1);
+                merge(arr, leftPointer, middlePointer, rightPointer);
+                leftPointer = rightPointer + 1;
+            }
+            if (step > arr.length / 2){
+                break;
+            }
+            step <<= 1;
+        }
+    }
+
     public static void main(String[] args) {
         System.out.println(Arrays.toString(sort(new int[]{3, 1, 4, 2})));
+        System.out.println(Arrays.toString(sortByLoop(new int[]{3, 1, 4, 2})));
     }
 }
