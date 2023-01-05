@@ -1,4 +1,4 @@
-package sort;
+package merge;
 
 import java.util.Arrays;
 
@@ -28,10 +28,10 @@ public class MergeSort {
             help[helpPointer++] = arr[leftPointer] <= arr[rightPointer] ? arr[leftPointer++] : arr[rightPointer++];
         }
         while (leftPointer <= middlePos){
-            help[helpPointer] = arr[leftPointer++];
+            help[helpPointer++] = arr[leftPointer++];
         }
         while (rightPointer <= rightPos){
-            help[helpPointer] = arr[rightPointer++];
+            help[helpPointer++] = arr[rightPointer++];
         }
         for (int i = 0; i < help.length; i++) {
             arr[leftPos + i] = help[i];
